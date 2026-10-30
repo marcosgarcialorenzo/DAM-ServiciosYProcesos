@@ -39,7 +39,7 @@ public class Caracol extends Thread {
                 return;
             }
         }
-        if (posicion >= META && intentarGanar()) { // comprueba si he llegado a la meta Y intentarGanar() devuelve true: y imprime el ganador
+        if (posicion >= META && intentarGanar()) { // comprueba si he llegado a la meta Y intentarGanar() devuelve true: y imprime el ganador. Despues termina el hilo
             System.out.println(">>> ¡" + nombre + " ha ganado la carrera!");
         }
     }
