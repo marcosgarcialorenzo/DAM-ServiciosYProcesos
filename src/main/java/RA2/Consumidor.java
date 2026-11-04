@@ -6,19 +6,14 @@ public class Consumidor extends Thread{
     public void run() {
         while (true) {
             synchronized (Story.storyList) {
-                System.out.println("Consumidor está intentando consumir");
                 try {
-                    if (Story.storyList.size() == 0) {
+                    int posicionOcupada = buscarPosicionOcupada();
+                    if (posicionOcupada == -1) { // si está vacío
                         Story.storyList.wait();
                     } else {
-                        for (int i = 0; i < Story.storyList.size(); i++) {
-                            if (Story.storyList.get(i) != null) {
-                                Story.storyList.remove(i);
-                                System.out.println("Consumidor ha consumido una historia");
-                                break;
-                            }
-                        }
-                        //Thread.sleep(100);
+                        Story.storyList[posicionOcupada] = null;
+                        System.out.println("Consumidor ha consumido una historia");
+                        Thread.sleep(100);
                         Story.storyList.notifyAll();
                     }
                 } catch (InterruptedException e) {
@@ -26,5 +21,14 @@ public class Consumidor extends Thread{
                 }
             }
         }
+    }
+
+    private int buscarPosicionOcupada() {
+        for (int i = 0; i < Story.storyList.length; i++) {
+            if (Story.storyList[i] != null) {
+                return i;
+            }
+        }
+        return -1;
     }
 }
