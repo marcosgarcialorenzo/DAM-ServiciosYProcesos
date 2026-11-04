@@ -10,6 +10,7 @@ public class Productor extends Thread {
                 try {
                     int posicionLibre = buscarPosicionLibre();
                     if (posicionLibre == -1) { // si está lleno
+                        System.out.println("Productor está esperando a que haya espacio para producir...");
                         Story.storyList.wait();
                     } else {
                         Story story = new Story();

@@ -9,12 +9,13 @@ public class Consumidor extends Thread{
                 try {
                     int posicionOcupada = buscarPosicionOcupada();
                     if (posicionOcupada == -1) { // si está vacío
+                        System.out.println("Consumidor está esperando a que haya historias...");
                         Story.storyList.wait();
                     } else {
-                        System.out.println("Consumidor ha consumido la historia " + Story.storyList[posicionOcupada].nombre);
+                        System.out.println("Consumidor ha consumido: " + Story.storyList[posicionOcupada].nombre);
                         Story.storyList[posicionOcupada] = null;
-                        Thread.sleep(100);
                         Story.storyList.notifyAll();
+                        Thread.sleep(100);
                     }
                 } catch (InterruptedException e) {
                     e.printStackTrace();
