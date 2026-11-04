@@ -6,8 +6,8 @@ public class Productor extends Thread {
     @Override
     public void run() {
         while (true) {
-            synchronized (Story.storyList) {
-                try {
+            try {
+                synchronized (Story.storyList) {
                     int posicionLibre = buscarPosicionLibre();
                     if (posicionLibre == -1) { // si está lleno
                         System.out.println("Productor está esperando a que haya espacio para producir...");
@@ -19,11 +19,12 @@ public class Productor extends Thread {
                         Story.storyList[posicionLibre] = story;
                         System.out.println("Productor ha producido: " + story.nombre);
                         Story.storyList.notifyAll();
-                        Thread.sleep(1200);
                     }
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
                 }
+                Thread.sleep(1200);
+            } catch (InterruptedException e) {
+                Thread.currentThread().interrupt();
+                return;
             }
         }
     }
