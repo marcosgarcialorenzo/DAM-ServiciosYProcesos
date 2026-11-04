@@ -11,8 +11,8 @@ public class Consumidor extends Thread{
                     if (posicionOcupada == -1) { // si está vacío
                         Story.storyList.wait();
                     } else {
+                        System.out.println("Consumidor ha consumido la historia " + Story.storyList[posicionOcupada].nombre);
                         Story.storyList[posicionOcupada] = null;
-                        System.out.println("Consumidor ha consumido una historia");
                         Thread.sleep(100);
                         Story.storyList.notifyAll();
                     }
