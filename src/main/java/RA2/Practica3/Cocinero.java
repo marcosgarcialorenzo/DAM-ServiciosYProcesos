@@ -1,6 +1,5 @@
 package RA2.Practica3;
 
-// Cada objeto de esta clase representa a un cocinero.
 public class Cocinero extends Thread {
     private final Ventanilla ventanilla;
 
@@ -13,15 +12,12 @@ public class Cocinero extends Thread {
     public void run() {
         try {
             while (true) {
-                
-                // El cocinero recoge una comanda y la cocina.
                 String comanda = ventanilla.tomarComanda();
                 Thread.sleep(2000); // tiempo de cocinado
                 ventanilla.ponerPlato(comanda);
             }
         } catch (InterruptedException e) {
-            // El programa principal interrumpe al cocinero al acabar.
-            Thread.currentThread().interrupt();
+            Thread.currentThread().interrupt();// El programa principal interrumpe al cocinero al acabar.
         }
     }
 }
