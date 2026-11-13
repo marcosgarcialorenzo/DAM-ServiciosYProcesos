@@ -47,8 +47,7 @@ public class Ventanilla {
         // Avisamos al cliente de que hay un plato disponible.
         notifyAll();
     }
-
-    // Este método sirve para que el cliente recoja un plato.
+    
     public synchronized String tomarPlato() throws InterruptedException {
         while (numeroPlatos == 0) { // Si no hay platos preparados, el cliente espera.
             wait();

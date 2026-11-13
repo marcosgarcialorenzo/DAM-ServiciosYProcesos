@@ -20,8 +20,7 @@ public class Camarero extends Thread {
                 Thread.sleep(1000);
             }
         } catch (InterruptedException e) {
-            // Si el hilo es interrumpido, se marca como interrumpido otra vez.
-            Thread.currentThread().interrupt();
+            Thread.currentThread().interrupt();// Si el hilo es interrumpido, se marca como interrumpido otra vez.
         }
     }
 }
