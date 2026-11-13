@@ -1,4 +1,4 @@
-package RA2;
+package RA2.IG;
 
 public class Productor extends Thread {
     private int contador = 1;

@@ -1,4 +1,4 @@
-package RA2;
+package RA2.IG;
 
 public class Main {
     public static void main(String[] args) throws InterruptedException {
