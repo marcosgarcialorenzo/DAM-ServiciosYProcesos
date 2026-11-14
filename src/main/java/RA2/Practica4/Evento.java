@@ -12,16 +12,16 @@ public class Evento extends Thread {
 
     @Override
     public void run() {
-        while (!pantalla.estaTerminado()) {
+        while (! pantalla.estaTerminado()) {
             if (tipoEvento == 1) {
-                pantalla.actualizarVida(-5);
+                pantalla.actualizarVida(- 5);
             } else {
                 pantalla.actualizarPuntos(10);
             }
             try {
                 Thread.sleep(500);
             } catch (InterruptedException e) {
-                return;
+                throw new RuntimeException(e);
             }
         }
     }
