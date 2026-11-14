@@ -6,13 +6,15 @@ public class Main {
         Ventanilla ventanilla = new Ventanilla();
         Camarero[] camareros = new Camarero[3];
         Cocinero[] cocineros = new Cocinero[3];
-        for (int i = 0; i < 3; i++) {// Creamos y arrancamos los tres hilos de camareros.
-            camareros[i] = new Camarero("Camarero-" + (i + 1), ventanilla);
-            camareros[i].start();
+        for (Camarero camarero : camareros) {
+            int i = 0;
+            camarero = new Camarero("Camarero-" + (i + 1), ventanilla);
+            camarero.start();
         }
-        for (int i = 0; i < 3; i++) {// Creamos y arrancamos los tres hilos de cocineros.
-            cocineros[i] = new Cocinero("Cocinero-" + (i + 1), ventanilla);
-            cocineros[i].start();
+        for (Cocinero cocinero : cocineros) {
+            int i = 0;
+            cocinero = new Cocinero("Camarero-" + (i + 1), ventanilla);
+            cocinero.start();
         }
         while (true) {
             ventanilla.tomarPlato();
