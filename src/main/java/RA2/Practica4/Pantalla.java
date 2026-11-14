@@ -8,18 +8,31 @@ public class Pantalla {
     private boolean hayCambios = false, terminado = false;
 
     public synchronized void actualizarVida(int cambio) {
+        if (terminado) {
+            return;
+        }
         vida += cambio;
+        if (vida <= 0) {
+            vida = 0;
+            terminado = true;
+        }
         hayCambios = true;
         notifyAll();
     }
 
     public synchronized void actualizarPuntos(int cambio) {
+        if (terminado) {
+            return;
+        }
         puntos += cambio;
         hayCambios = true;
         notifyAll();
     }
 
     public synchronized void actualizarPosicion(int x, int y) {
+        if (terminado) {
+            return;
+        }
         posX += x;
         posY += y;
         hayCambios = true;
@@ -38,8 +51,7 @@ public class Pantalla {
         return true;
     }
 
-    public synchronized void terminar() {
-        terminado = true;
-        notifyAll();
+    public synchronized boolean estaTerminado() {
+        return terminado;
     }
 }
