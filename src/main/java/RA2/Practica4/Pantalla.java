@@ -1,33 +1,23 @@
 package RA2.Practica4;
 
-/**
- * Estado compartido que muestran los hilos del juego.
- */
 public class Pantalla {
+
     private int vida = 100;
-    private int puntos;
-    private int posicionSiguienteMonstruo;
-
-    public synchronized void actualizarVida(int vida) {
-        this.vida = Math.max(0, vida);
+    private int puntos = 0;
+    private int posX = 0, posY = 0;
+    
+    public synchronized void actualizarVida(int cambio) {
+        vida += cambio;
     }
-
-    public synchronized void reducirVida(int cantidad) {
-        actualizarVida(vida - cantidad);
+    public synchronized void actualizarPuntos(int cambio) {
+        puntos += cambio;
     }
-
-    public synchronized void sumarPuntos(int puntos) {
-        this.puntos += puntos;
+    public synchronized void actualizarPosicion(int x, int y) {
+        posX += x;
+        posY += y;
     }
-
-    public synchronized void actualizarPosicionMonstruo(int posicion) {
-        posicionSiguienteMonstruo = posicion;
-    }
-
-    public synchronized Estado obtenerEstado() {
-        return new Estado(vida, puntos, posicionSiguienteMonstruo);
-    }
-
-    public record Estado(int vida, int puntos, int posicionSiguienteMonstruo) {
+    
+    public synchronized void dibujar() {
+        System.out.println("Vida: " + vida + " | Puntos: " + puntos + " | Monstruo en (" + posX + "," + posY + ")");
     }
 }
