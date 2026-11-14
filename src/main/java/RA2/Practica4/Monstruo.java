@@ -12,7 +12,7 @@ public class Monstruo extends Thread {
 
     @Override
     public void run() {
-        while (true){
+        while (!pantalla.estaTerminado()) {
             pantalla.actualizarPosicion(random.nextInt(100), random.nextInt(100));
             try {
                 Thread.sleep(600);

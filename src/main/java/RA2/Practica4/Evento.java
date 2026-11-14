@@ -12,7 +12,7 @@ public class Evento extends Thread {
 
     @Override
     public void run() {
-        while (true) {
+        while (!pantalla.estaTerminado()) {
             if (tipoEvento == 1) {
                 pantalla.actualizarVida(-5);
             } else {
