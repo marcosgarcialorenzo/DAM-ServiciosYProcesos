@@ -11,11 +11,12 @@ public class Renderizar extends Thread {
     @Override
     public void run() {
         while (true) {
-            pantalla.dibujar();
             try {
-                Thread.sleep(500);
+                while (pantalla.dibujar())  {
+                    
+                }
             } catch (InterruptedException e) {
-                return;
+                Thread.currentThread().interrupt();
             }
         }
     }
