@@ -19,10 +19,10 @@ public class Main {
         puntos.start();
         monstruo.start();
 
+        render.join();
         vida.join();
         puntos.join();
         monstruo.join();
-        render.join();
         
         System.out.println("Fin del juego");
     }
