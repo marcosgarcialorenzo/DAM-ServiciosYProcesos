@@ -22,9 +22,6 @@ public class Main {
         vida.join();
         puntos.join();
         monstruo.join();
-
-        pantalla.terminar();
-        
         render.join();
         
         System.out.println("Fin del juego");
