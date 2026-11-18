@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>Programacion.Curso2526</groupId>
-    <artifactId>DAM-ServiciosYProcesos</artifactId>
+    <artifactId>DAM-PSP</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <properties>
